@@ -1,0 +1,151 @@
+from PyQt5.QtWidgets import *
+def show_info_messagebox(Text):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Information)
+    msg.setText(Text)
+    msg.setWindowTitle("Information MessageBox")
+
+    msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+    retval = msg.exec_()
+
+app = QApplication([])
+mainWin = QWidget()
+app.setStyleSheet("""
+         Qwidget {
+              background: #000000;
+         }
+
+         QPushButton
+         { 
+            min-height: 40px;
+            min-width: 40px;
+            max-height: 40px;
+            max-width: 40px;
+            background-color: #FFFFE4
+         }""")
+button11 = QPushButton()
+button12 = QPushButton()
+button13 = QPushButton()
+button14 = QPushButton()
+button15 = QPushButton()
+button16 = QPushButton()
+button17 = QPushButton()
+button18 = QPushButton()
+button19 = QPushButton()
+vline = QVBoxLayout()
+
+hline1 = QHBoxLayout()
+hline1.addWidget(button11)
+hline1.addWidget(button12)
+hline1.addWidget(button13)
+vline.addLayout(hline1)
+
+hline2 = QHBoxLayout()
+hline2.addWidget(button14)
+hline2.addWidget(button15)
+hline2.addWidget(button16)
+vline.addLayout(hline2)
+
+hline3 = QHBoxLayout()
+hline3.addWidget(button17)
+hline3.addWidget(button18)
+hline3.addWidget(button19)
+vline.addLayout(hline3)
+
+a = 0
+
+
+def click(btn):
+    global a
+    if btn.text() == "":
+        a += 1
+        if a % 2 == 0:
+            btn.setText("0")
+        else:
+            btn.setText("x")
+
+
+
+    # перевіряти на перемогу x
+
+
+    if button11.text() == "x" and button12.text() == "x" and button13.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button13.text() == "x" and button14.text() == "x" and button15.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button16.text() == "x" and button17.text() == "x" and button18.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button11.text() == "x" and button14.text() == "x" and button17.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button12.text() == "x" and button15.text() == "x" and button18.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button13.text() == "x" and button16.text() == "x" and button19.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button11.text() == "x" and button15.text() == "x" and button19.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+
+    if button13.text() == "x" and button15.text() == "x" and button17.text() == "x":
+        show_info_messagebox("Переміг x")
+        mainWin.close()
+# перевіряти на перемогу 0
+
+
+    if button11.text() == "0" and button12.text() == "0" and button13.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button13.text() == "0" and button14.text() == "0" and button15.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button16.text() == "0" and button17.text() == "0" and button18.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button11.text() == "0" and button14.text() == "0" and button17.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button12.text() == "0" and button15.text() == "0" and button18.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button13.text() == "0" and button16.text() == "0" and button19.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button11.text() == "0" and button15.text() == "0" and button19.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+
+    if button13.text() == "0" and button15.text() == "0" and button17.text() == "0":
+        show_info_messagebox("Переміг 0")
+        mainWin.close()
+    if button11.text() !="" and  button12.text() != "" and button13.text() != "" and button14.text() != "" and button15.text() != "" and button16.text() != "" and button17.text() != "" and button18.text() != "" and button19.text() != "":
+        show_info_messagebox("Ничія")
+        mainWin.close()
+button11.clicked.connect(lambda: click(button11))
+button12.clicked.connect(lambda: click(button12))
+button13.clicked.connect(lambda: click(button13))
+button14.clicked.connect(lambda: click(button14))
+button15.clicked.connect(lambda: click(button15))
+button16.clicked.connect(lambda: click(button16))
+button17.clicked.connect(lambda: click(button17))
+button18.clicked.connect(lambda: click(button18))
+button19.clicked.connect(lambda: click(button19))
+mainWin.setLayout(vline)
+mainWin.show()
+app.exec_()
